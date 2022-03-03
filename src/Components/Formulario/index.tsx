@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
+import { ITarefa } from "../../Types";
 import Botao from "../Botao";
 import style from './Formulario.module.scss';
 
-const Formulario = () => {
+interface ISetTarefa {
+    setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>
+}
 
+const Formulario = ({setTarefas}: ISetTarefa) => {
+    const [values, setValues] = useState(
+        {tarefa: '', tempo: '00:00:00'}
+    )
+
+    const handleTimeChange = (ev: { target: { value: string; }; }) => {
+        setValues({...values, tempo: ev.target.value})
+    }
+
+    const handleTextChange = (ev: { target: { value: string; }; }) => {
+        setValues({...values, tarefa: ev.target.value})
+    }
+
+    const addTarefa = (ev: React.FormEvent) => {
+        ev.preventDefault();
+        setTarefas(tarefasAntigas => [...tarefasAntigas, {...values}])
+      }
+
+    
     return (
-        <form className={style.novaTarefa}>
+        <form className={style.novaTarefa} onSubmit={addTarefa}>
             <div className={style.inputContainer}>
                 <label>Adicione uma nova tarefa</label>
                 <input 
@@ -13,6 +35,8 @@ const Formulario = () => {
                     name='tarefa'
                     placeholder="O que você quer estudar"
                     required
+                    value={values.tarefa}
+                    onChange={handleTextChange}
                 />
             </div>
             <div className={style.inputContainer}>
@@ -24,9 +48,11 @@ const Formulario = () => {
                     min="00:00:00"
                     max="01:30:00"
                     required
+                    value={values.tempo}
+                    onChange={handleTimeChange}
                 />
             </div>
-            <Botao>Adicionar</Botao>
+            <Botao type="submit">Adicionar</Botao>
         </form>
     )
 }
