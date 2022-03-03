@@ -1,11 +1,12 @@
 import React from "react";
 import Botao from "../Botao";
+import style from './Formulario.module.scss';
 
 const Formulario = () => {
 
     return (
-        <form>
-            <div>
+        <form className={style.novaTarefa}>
+            <div className={style.inputContainer}>
                 <label>Adicione uma nova tarefa</label>
                 <input 
                     type="text" 
@@ -14,7 +15,7 @@ const Formulario = () => {
                     required
                 />
             </div>
-            <div>
+            <div className={style.inputContainer}>
                 <label>Tempo</label>
                 <input 
                     type="time" 
@@ -25,7 +26,7 @@ const Formulario = () => {
                     required
                 />
             </div>
-            <Botao />
+            <Botao>Adicionar</Botao>
         </form>
     )
 }
