@@ -1,10 +1,6 @@
+import { ITarefa } from "../../Types";
 import Item from "./Item";
 import style from './Lista.module.scss';
-
-interface ITarefa {
-    tarefa: string,
-    tempo: string
-}
 
 const Lista = ({tarefas}: {tarefas: ITarefa[]}) => {
     return (

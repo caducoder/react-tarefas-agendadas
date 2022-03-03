@@ -1,6 +1,7 @@
+import { ITarefa } from '../../../Types';
 import style from '../Lista.module.scss';
 
-const Item = ({tarefa, tempo}: {tarefa: string, tempo: string}) => {
+const Item = ({tarefa, tempo, selecionado, completado, id}: ITarefa) => {
     return (
         <li className={style.item}>
             <h3>{tarefa}</h3>
