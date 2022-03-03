@@ -2,13 +2,14 @@ import React from "react";
 import style from './Botao.module.scss';
 
 interface Props {
-    children: string
+    children: string,
+    type?: "button" | "submit" | "reset" | undefined
 }
 
-const Botao = ({children}: Props) => {
+const Botao = ({children, type}: Props) => {
 
     return (
-        <button className={style.botao}>
+        <button type={type ? type : 'button'} className={style.botao}>
             {children}
         </button>
     )
