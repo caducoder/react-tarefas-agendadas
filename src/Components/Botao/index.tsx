@@ -8,9 +8,12 @@ interface Props {
 }
 
 const Botao = ({ children, type, onClick }: Props) => {
-
     return (
-        <button onClick={onClick} type={type ? type : 'button'} className={style.botao}>
+        <button
+            onClick={onClick}
+            type={type ? type : 'button'}
+            className={style.botao}
+        >
             {children}
         </button>
     )
