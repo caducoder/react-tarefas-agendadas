@@ -4,6 +4,7 @@ import style from './Cronometro.module.scss'
 import { tempoParaSegundos } from "../../Common/utils/time"
 import { ITarefa } from "../../Types"
 import { useEffect, useState } from "react"
+import { FaPlay } from 'react-icons/fa'
 
 interface IProps {
     selecionado: ITarefa | undefined,
@@ -36,7 +37,7 @@ export const Cronometro = ({ selecionado, finalizarTarefa }: IProps) => {
             <div className={style.relogioWrapper}>
                 <Relogio tempo={tempo} />
             </div>
-            <Botao onClick={() => regressiva(tempo)}>Começar</Botao>
+            <Botao onClick={() => regressiva(tempo)}><FaPlay /> <span>Começar</span></Botao>
         </div>
     )
 }

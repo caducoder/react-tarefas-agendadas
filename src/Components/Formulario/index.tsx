@@ -3,6 +3,7 @@ import { ITarefa } from "../../Types";
 import Botao from "../Botao";
 import style from './Formulario.module.scss';
 import { v4 as uuidv4 } from 'uuid';
+import { FaPlus } from "react-icons/fa";
 
 interface ISetTarefa {
     setTarefas: React.Dispatch<React.SetStateAction<ITarefa[]>>
@@ -58,7 +59,7 @@ const Formulario = ({ setTarefas }: ISetTarefa) => {
                     onChange={handleTimeChange}
                 />
             </div>
-            <Botao type="submit">Adicionar</Botao>
+            <Botao type="submit"><FaPlus /> <div>Adicionar</div></Botao>
         </form>
     )
 }
